@@ -1,7 +1,11 @@
-dic = {"dog": 1,
-       "cat": 2,
-       "tree": 3}
+num = int(input())
+word = str(input())
 
-print(dic["dog"])
-print(dic["cat"])
-print(dic["tree"])
+if word.count("A") < word.count("B"):
+    print("B")
+
+elif word.count("A") > word.count("B"):
+    print("A")
+
+else:
+    print("Tie")
