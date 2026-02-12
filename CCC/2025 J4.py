@@ -1,27 +1,19 @@
 n = int(input())
+days = [input().strip() for _ in range(n)]
 
-days = []
-i = 0
-consecutive = 0
-left = ""
-final = 0
+max_streak = 0
+left = 0
+p_count = 0
 
-for _ in range(n):
-    days.append(str(input()))
+for right in range(n):
+    if days[right] == 'P':
+        p_count += 1
 
-for i in range(n):
-    if days[i] == 'S':
-        consecutive += 1
-    else:
-        if days[i] == 'P' and i !=0:
-            if days[i + 1] == 'S' and days[i - 1] == 'S':
-                consecutive += 1
-                done = True
-            else:
-                consecutive = 0
-        else:
-            consecutive = 0
-    if consecutive > final:
-        final = consecutive
+    while p_count > 1:
+        if days[left] == 'P':
+            p_count -= 1
+        left += 1
 
-print(final)
+    max_streak = max(max_streak, right - left + 1)
+
+print(max_streak)
